@@ -1,0 +1,82 @@
+version: "3.1"
+
+intents:
+  - greet
+  - goodbye
+  - affirm
+  - deny
+  - mood_great
+  - mood_unhappy
+  - bot_challenge
+  - inform_country
+  - inform_transport_Train 
+  - inform_transport_Airplane
+  - duree_voyage
+
+
+
+entities:
+ - name
+ - voy_train_avion
+slots:
+  voy_train_avion:
+    type: text
+    influence_conversation: false
+    mappings:
+    - type: from_entity
+      entity: voy_train_avion
+  name:
+    type: text
+    influence_conversation: false
+    mappings:
+    - type: from_entity
+      entity: name
+  
+
+    
+
+responses:
+  utter_greet:
+  - text: "Hi {name},How are you?"
+  utter_cheer_up:
+  - text: "Here is something to cheer you up:"
+    image: "https://i.imgur.com/nGF1K8f.jpg"
+
+  utter_did_that_help:
+  - text: "Did that help you?"
+
+  utter_happy:
+  - text: "Great, carry on!"
+
+  utter_goodbye:
+  - text: "Bye"
+
+  utter_iamabot:
+  - text: "I am a bot, powered by Rasa."
+
+  utter_help:
+  - text: "How can I help You ?"
+  
+  utter_airplane_price:
+  - text: "The price of an airplane ticket to France is 300 euros."
+
+  utter_train_price:
+  - text: "The price of a train ticket to France is 100 euros."
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
+
+actions:
+- action_voyage_duration
+- utter_greet
+- utter_train_price
+- utter_cheer_up
+- utter_did_that_help
+- utter_happy
+- utter_goodbye
+- utter_iamabot
+- utter_airplane_price
+
+
+
+
