@@ -32,14 +32,14 @@ jobs:
           curl -sSLo sonarscanner.zip https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.7.0.2747-linux.zip
           unzip sonarscanner.zip
           sudo mv sonar-scanner-4.7.0.2747-linux /opt/sonar-scanner
-          export PATH=$PATH:/opt/sonar-scanner/bin
+          echo "/opt/sonar-scanner/bin" >> $GITHUB_PATH  # Ajout au PATH global de GitHub Actions
 
       - name: SonarCloud Scan
         env:
           SONAR_TOKEN: ${{ secrets.GitHubActionsToken }}
         run: |
           sonar-scanner \
-            -Dsonar.projectKey=AbdellaouiHajar1_ProjetChatbot\
-            -Dsonar.organization=abdellaouihajar1\
+            -Dsonar.projectKey=AbdellaouiHajar1_ProjetChatbot \
+            -Dsonar.organization=abdellaouihajar1 \
             -Dsonar.host.url=https://sonarcloud.io \
             -Dsonar.login=$SONAR_TOKEN
