@@ -39,7 +39,7 @@ jobs:
 
       - name: SonarCloud Scan
         env:
-          SONAR_TOKEN: ${{ secrets.GitHubActionsToken }}
+          SONAR_TOKEN: ${{ secrets.GITHUBACTIONSTOKEN }}
         run: |
           sonar-scanner \
             -Dsonar.projectKey=AbdellaouiHajar1_ProjetChatbot \
