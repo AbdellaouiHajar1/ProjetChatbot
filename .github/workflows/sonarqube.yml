@@ -18,7 +18,10 @@ jobs:
         uses: actions/setup-java@v3
         with:
           java-version: '17'
-          distribution: 'adopt'
+          distribution: 'temurin'
+
+      - name: Verify Java Version
+        run: java -version
 
       - name: Cache SonarCloud packages
         uses: actions/cache@v3
