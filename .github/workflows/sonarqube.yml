@@ -32,9 +32,13 @@ jobs:
           curl -sSLo sonarscanner.zip https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.7.0.2747-linux.zip
           unzip sonarscanner.zip
           sudo mv sonar-scanner-4.7.0.2747-linux /opt
+          echo "/opt/sonar-scanner-4.7.0.2747-linux/bin" >> $GITHUB_PATH # Ajout du chemin à PATH
 
       - name: Verify Java Version for SonarScanner
         run: java -version
+
+      - name: Verify SonarScanner installation
+        run: sonar-scanner --version # Vérifiez si sonar-scanner est correctement installé
 
       - name: SonarCloud Scan
         env:
